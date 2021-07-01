@@ -26,13 +26,15 @@ class APIRequest {
 }
 
 class APICalling {
+    var models = [MovieModel]()
     func send<T: Codable>(apiRequest: APIRequest) -> Observable<T> {
         return Observable<T>.create { observer in
             let request = apiRequest.request(with: apiRequest.baseURL)
-            let task = URLSession.shared.dataTask(with: request, completionHandler: { (data, response, error) in
+            let task = URLSession.shared.dataTask(with: request, completionHandler: { [weak self] (data, response, error) in
                 do {
                     let models: [MovieModel] = try JSONDecoder().decode([MovieModel].self, from: data ?? Data())
-                    observer.onNext( models as! T)
+                    self?.models = models
+                    observer.onNext( self?.models as! T)
                 } catch let error {
                     observer.onError(error)
                 }
@@ -42,6 +44,22 @@ class APICalling {
             
             return Disposables.create {
                 task.cancel()
+            }
+        }
+    }
+    
+    func filterBy<T: Codable>(query: String) -> Observable<T> {
+        return Observable<T>.create { observer in
+            do {
+                self.models = self.models.filter { model in
+                    model.release_date == query
+                }
+                observer.onNext( self.models as! T)
+            }
+            observer.onCompleted()
+            
+            return Disposables.create {
+                
             }
         }
     }

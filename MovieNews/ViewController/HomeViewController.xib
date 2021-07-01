@@ -10,7 +10,9 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HomeViewController" customModule="MovieNews" customModuleProvider="target">
             <connections>
+                <outlet property="searchTextView" destination="qFL-il-9pr" id="ZI5-z4-apR"/>
                 <outlet property="tableView" destination="R4V-hN-6Kj" id="ULj-Ov-ktM"/>
+                <outlet property="textField" destination="9L8-hz-rl4" id="XOr-ws-7zA"/>
                 <outlet property="view" destination="iN0-l3-epB" id="d0O-p4-xAi"/>
             </connections>
         </placeholder>
@@ -20,22 +22,50 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="R4V-hN-6Kj">
-                    <rect key="frame" x="12" y="56" width="390" height="794"/>
+                    <rect key="frame" x="12" y="146" width="390" height="704"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                 </tableView>
+                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="qFL-il-9pr">
+                    <rect key="frame" x="12" y="32" width="390" height="40"/>
+                    <color key="backgroundColor" systemColor="linkColor"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="40" id="71M-1z-PTK"/>
+                    </constraints>
+                    <color key="textColor" systemColor="labelColor"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                </textView>
+                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9L8-hz-rl4">
+                    <rect key="frame" x="12" y="100" width="390" height="34"/>
+                    <color key="backgroundColor" red="0.9642402216" green="0.65049225870000005" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits"/>
+                </textField>
             </subviews>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
-                <constraint firstItem="R4V-hN-6Kj" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="12" id="EtJ-5g-CqS"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="9L8-hz-rl4" secondAttribute="trailing" constant="12" id="0hc-L1-V5R"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="qFL-il-9pr" secondAttribute="trailing" constant="12" id="1BG-KE-M4Q"/>
+                <constraint firstItem="9L8-hz-rl4" firstAttribute="top" secondItem="qFL-il-9pr" secondAttribute="bottom" constant="28" id="BiE-8N-vVX"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="R4V-hN-6Kj" secondAttribute="trailing" constant="12" id="MXE-GM-1uJ"/>
+                <constraint firstItem="R4V-hN-6Kj" firstAttribute="top" secondItem="9L8-hz-rl4" secondAttribute="bottom" constant="12" id="Rrk-6Y-60f"/>
+                <constraint firstItem="qFL-il-9pr" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="-12" id="TxI-kT-VRP"/>
                 <constraint firstItem="R4V-hN-6Kj" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="12" id="bl3-vV-mdD"/>
+                <constraint firstItem="qFL-il-9pr" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="12" id="eKD-5A-MSz"/>
+                <constraint firstItem="9L8-hz-rl4" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="12" id="ouv-0f-ccL"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="R4V-hN-6Kj" secondAttribute="bottom" constant="12" id="pUM-2f-3MZ"/>
             </constraints>
             <point key="canvasLocation" x="-61" y="67"/>
         </view>
     </objects>
     <resources>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="linkColor">
+            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
