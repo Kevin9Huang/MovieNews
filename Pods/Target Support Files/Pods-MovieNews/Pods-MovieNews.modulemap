@@ -1,0 +1,6 @@
+framework module Pods_MovieNews {
+  umbrella header "Pods-MovieNews-umbrella.h"
+
+  export *
+  module * { export * }
+}

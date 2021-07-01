@@ -1,0 +1,6 @@
+framework module Pods_MovieNews_MovieNewsUITests {
+  umbrella header "Pods-MovieNews-MovieNewsUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}
