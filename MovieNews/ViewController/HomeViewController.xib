@@ -10,9 +10,9 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HomeViewController" customModule="MovieNews" customModuleProvider="target">
             <connections>
+                <outlet property="searchContainerView" destination="syC-VU-uP2" id="tQq-hR-tHL"/>
                 <outlet property="searchTextView" destination="qFL-il-9pr" id="ZI5-z4-apR"/>
                 <outlet property="tableView" destination="R4V-hN-6Kj" id="ULj-Ov-ktM"/>
-                <outlet property="textField" destination="9L8-hz-rl4" id="XOr-ws-7zA"/>
                 <outlet property="view" destination="iN0-l3-epB" id="d0O-p4-xAi"/>
             </connections>
         </placeholder>
@@ -22,39 +22,50 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="R4V-hN-6Kj">
-                    <rect key="frame" x="12" y="146" width="390" height="704"/>
+                    <rect key="frame" x="12" y="132" width="390" height="718"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                 </tableView>
-                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="qFL-il-9pr">
-                    <rect key="frame" x="12" y="32" width="390" height="40"/>
-                    <color key="backgroundColor" systemColor="linkColor"/>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="syC-VU-uP2">
+                    <rect key="frame" x="12" y="56" width="390" height="64"/>
+                    <subviews>
+                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" verticalCompressionResistancePriority="752" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="qFL-il-9pr">
+                            <rect key="frame" x="170" y="12" width="208" height="40"/>
+                            <color key="backgroundColor" systemColor="systemGreenColor"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="40" id="71M-1z-PTK"/>
+                            </constraints>
+                            <color key="textColor" systemColor="labelColor"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                        </textView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Filter by Year: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NmP-x2-ZN5">
+                            <rect key="frame" x="12" y="21.5" width="108" height="21"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="40" id="71M-1z-PTK"/>
+                        <constraint firstItem="qFL-il-9pr" firstAttribute="top" secondItem="syC-VU-uP2" secondAttribute="top" constant="12" id="4LA-4d-SgH"/>
+                        <constraint firstAttribute="trailing" secondItem="qFL-il-9pr" secondAttribute="trailing" constant="12" id="4tT-QV-WD4"/>
+                        <constraint firstItem="NmP-x2-ZN5" firstAttribute="leading" secondItem="syC-VU-uP2" secondAttribute="leading" constant="12" id="MgR-oa-LF0"/>
+                        <constraint firstAttribute="bottom" secondItem="qFL-il-9pr" secondAttribute="bottom" constant="12" id="Siu-62-lWm"/>
+                        <constraint firstItem="qFL-il-9pr" firstAttribute="leading" secondItem="NmP-x2-ZN5" secondAttribute="trailing" constant="50" id="cwg-Ud-gJj"/>
+                        <constraint firstItem="NmP-x2-ZN5" firstAttribute="centerY" secondItem="qFL-il-9pr" secondAttribute="centerY" id="f07-tB-xPh"/>
                     </constraints>
-                    <color key="textColor" systemColor="labelColor"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                </textView>
-                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9L8-hz-rl4">
-                    <rect key="frame" x="12" y="100" width="390" height="34"/>
-                    <color key="backgroundColor" red="0.9642402216" green="0.65049225870000005" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                    <textInputTraits key="textInputTraits"/>
-                </textField>
+                </view>
             </subviews>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="9L8-hz-rl4" secondAttribute="trailing" constant="12" id="0hc-L1-V5R"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="qFL-il-9pr" secondAttribute="trailing" constant="12" id="1BG-KE-M4Q"/>
-                <constraint firstItem="9L8-hz-rl4" firstAttribute="top" secondItem="qFL-il-9pr" secondAttribute="bottom" constant="28" id="BiE-8N-vVX"/>
+                <constraint firstItem="syC-VU-uP2" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="12" id="JSi-lR-TUc"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="R4V-hN-6Kj" secondAttribute="trailing" constant="12" id="MXE-GM-1uJ"/>
-                <constraint firstItem="R4V-hN-6Kj" firstAttribute="top" secondItem="9L8-hz-rl4" secondAttribute="bottom" constant="12" id="Rrk-6Y-60f"/>
-                <constraint firstItem="qFL-il-9pr" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="-12" id="TxI-kT-VRP"/>
+                <constraint firstItem="syC-VU-uP2" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="12" id="U45-Wd-7kY"/>
                 <constraint firstItem="R4V-hN-6Kj" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="12" id="bl3-vV-mdD"/>
-                <constraint firstItem="qFL-il-9pr" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="12" id="eKD-5A-MSz"/>
-                <constraint firstItem="9L8-hz-rl4" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="12" id="ouv-0f-ccL"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="syC-VU-uP2" secondAttribute="trailing" constant="12" id="njZ-Rf-kgE"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="R4V-hN-6Kj" secondAttribute="bottom" constant="12" id="pUM-2f-3MZ"/>
+                <constraint firstItem="R4V-hN-6Kj" firstAttribute="top" secondItem="syC-VU-uP2" secondAttribute="bottom" constant="12" id="zTI-L3-ugP"/>
             </constraints>
             <point key="canvasLocation" x="-61" y="67"/>
         </view>
@@ -63,11 +74,11 @@
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
-        <systemColor name="linkColor">
-            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGreenColor">
+            <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
