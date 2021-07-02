@@ -12,6 +12,7 @@
 		C2BACE048B9433830ACEABC1 /* Pods_MovieNews.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3343A6F9F7BB7058E2358F66 /* Pods_MovieNews.framework */; };
 		CC543B56268DF70900B76173 /* HomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CC543B55268DF70900B76173 /* HomeViewController.xib */; };
 		CC7C4EAF268DCFFC00F8D82B /* APIRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC7C4EAE268DCFFC00F8D82B /* APIRequest.swift */; };
+		CC8E825C268EED68009457CA /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC8E825B268EED68009457CA /* HomeViewModel.swift */; };
 		CC950E63268DA07900E74906 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC950E62268DA07900E74906 /* AppDelegate.swift */; };
 		CC950E65268DA07900E74906 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC950E64268DA07900E74906 /* SceneDelegate.swift */; };
 		CC950E67268DA07900E74906 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC950E66268DA07900E74906 /* HomeViewController.swift */; };
@@ -52,6 +53,7 @@
 		9E7D640D1FD04C3CC6DB4CFA /* Pods-MovieNews-MovieNewsUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MovieNews-MovieNewsUITests.debug.xcconfig"; path = "Target Support Files/Pods-MovieNews-MovieNewsUITests/Pods-MovieNews-MovieNewsUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		CC543B55268DF70900B76173 /* HomeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeViewController.xib; sourceTree = "<group>"; };
 		CC7C4EAE268DCFFC00F8D82B /* APIRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIRequest.swift; sourceTree = "<group>"; };
+		CC8E825B268EED68009457CA /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		CC950E5F268DA07900E74906 /* MovieNews.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MovieNews.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CC950E62268DA07900E74906 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CC950E64268DA07900E74906 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -190,6 +192,7 @@
 		CC950E93268DA2E000E74906 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				CC8E825B268EED68009457CA /* HomeViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -469,6 +472,7 @@
 			files = (
 				CC950E67268DA07900E74906 /* HomeViewController.swift in Sources */,
 				CC950E63268DA07900E74906 /* AppDelegate.swift in Sources */,
+				CC8E825C268EED68009457CA /* HomeViewModel.swift in Sources */,
 				CC950E9D268DA61C00E74906 /* MovieModel.swift in Sources */,
 				CC950E9A268DA32E00E74906 /* MovieTableViewCell.swift in Sources */,
 				CC7C4EAF268DCFFC00F8D82B /* APIRequest.swift in Sources */,

@@ -10,36 +10,31 @@ import RxSwift
 import RxCocoa
 
 class HomeViewController: UIViewController {
-    
-    private let apiCalling = APICalling()
-    private let disposeBag = DisposeBag()
-    private var result : Observable<[MovieModel]>?
-    var posts: [MovieModel] = []
-    
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var searchTextView: UITextView!
     @IBOutlet weak var searchContainerView: UIView!
+
+    //Private var
+    private var homeViewModel = HomeViewModel()
+    private let disposeBag = DisposeBag()
+    private var movieModels = PublishSubject<[MovieModel]>()
+    
+    required init(viewModel: HomeViewModel) {
+        self.homeViewModel = viewModel
+        super.init(nibName: "HomeViewController", bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        homeViewModel.onViewDidLoad()
         
         setUpContainerView()
         tableView.register(UINib(nibName: "MovieTableViewCell", bundle: nil), forCellReuseIdentifier: "MovieTableViewCell")
-        
-        let request = APIRequest()
-        self.apiCalling.send(apiRequest: request).subscribe(
-            onNext: {[weak self] result in
-                self?.posts = result
-            },
-            onError: { error in
-                print(error.localizedDescription)
-            },
-            onCompleted: {
-                print("Completed")
-                DispatchQueue.main.async {
-                    self.setUpBinding()
-                }
-            }).disposed(by: disposeBag)
+        setUpBinding()
     }
     
     func setUpContainerView() {
@@ -50,14 +45,19 @@ class HomeViewController: UIViewController {
     }
     
     func setUpBinding() {
-        let movieList = Observable.just(self.posts)
-        Observable.combineLatest(movieList, searchTextView.rx.text)
+        homeViewModel
+            .moviePublishArr
+            .observe(on: MainScheduler.instance)
+            .bind(to: self.movieModels)
+            .disposed(by: disposeBag)
+        
+        Observable.combineLatest(movieModels, searchTextView.rx.text)
             .map { (list,query) -> [MovieModel] in
                 guard let query = query,
                       !query.isEmpty else {
-                    return self.posts
+                    return list
                 }
-                return self.posts.filter {
+                return list.filter {
                     $0.release_date.hasPrefix(query)
                 }
             }
