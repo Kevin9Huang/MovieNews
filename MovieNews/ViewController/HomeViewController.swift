@@ -41,36 +41,21 @@ class HomeViewController: UIViewController {
                     self.textField.inputView = pickerView
                     self.configureTextField(pickerView: pickerView)
                     self.configureTableView(pickerView: pickerView)
+                    self.configureTableView()
                 }
             }).disposed(by: disposeBag)
-        
-//        guard let result = result else {
-//            return
-//        }
-//        _ = result.bind(to: tableView.rx.items(cellIdentifier: "MovieTableViewCell")) {( row, model, cell) in
-//            guard let cell = cell as? MovieTableViewCell else {
-//                return
-//            }
-//            cell.titleLabel.text = model.title
-//            cell.descriptionLabel.text = model.description
-//            cell.directedByLabel.text = model.director
-//            cell.yearLabel.text = model.release_date
-//        }
-//        .disposed(by: disposeBag)
-        
-        //        searchTextView.rx.text
-        //            .orEmpty
-        //            .subscribe(onNext: {query in
-        //
-        //            }).disposed(by: disposeBag)
     }
     
     func configureTableView() {
         let movieList = Observable.just(self.posts)
         Observable.combineLatest(movieList, searchTextView.rx.text)
             .map { (list,query) -> [MovieModel] in
+                guard let query = query,
+                      !query.isEmpty else {
+                    return self.posts
+                }
                 return self.posts.filter {
-                    $0.release_date == query
+                    $0.release_date.hasPrefix(query)
                 }
             }
             .bind(to: tableView.rx.items(cellIdentifier: "MovieTableViewCell",
@@ -100,10 +85,10 @@ class HomeViewController: UIViewController {
     }
     
     func configureTableView(pickerView: UIPickerView) {
-        let recipeList = Observable.just(self.posts)
-        Observable.combineLatest(recipeList, pickerView.rx.itemSelected.map { $0.row })
+        let movieList = Observable.just(self.posts)
+        Observable.combineLatest(movieList, pickerView.rx.itemSelected.map { $0.row })
             .map { (list, selected) -> [MovieModel] in
-                guard selected != 0 else { return list }
+                guard selected != 0 else { return self.posts }
                 let movieSelected = self.posts[selected]
                 
                 return self.posts.filter {
@@ -119,9 +104,5 @@ class HomeViewController: UIViewController {
             }
             .disposed(by: disposeBag)
     }
-}
-extension HomeViewController { //should be at view model
-    
-    
 }
 
