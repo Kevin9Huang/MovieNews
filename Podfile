@@ -10,6 +10,8 @@ target 'MovieNews' do
   target 'MovieNewsTests' do
     inherit! :search_paths
     # Pods for testing
+	pod 'RxTest'
+    	pod 'RxBlocking'
   end
 
   target 'MovieNewsUITests' do
@@ -18,4 +20,5 @@ target 'MovieNews' do
 
 pod 'RxSwift'
 pod 'RxCocoa'
+
 end

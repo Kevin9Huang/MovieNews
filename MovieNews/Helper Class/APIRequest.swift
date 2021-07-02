@@ -47,20 +47,4 @@ class APICalling {
             }
         }
     }
-    
-    func filterBy<T: Codable>(query: String) -> Observable<T> {
-        return Observable<T>.create { observer in
-            do {
-                self.models = self.models.filter { model in
-                    model.release_date == query
-                }
-                observer.onNext( self.models as! T)
-            }
-            observer.onCompleted()
-            
-            return Disposables.create {
-                
-            }
-        }
-    }
 }
