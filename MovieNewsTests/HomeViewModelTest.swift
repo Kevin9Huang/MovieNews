@@ -54,22 +54,28 @@ class HomeViewModelTest: XCTestCase {
         let movieObserver = scheduler.createObserver([MovieModel].self)
         var records : Observable<[MovieModel]>
         let output: () = viewModel.onViewDidLoad()
+        let mockMovieModel = MovieModel(title: "Movie Title", description: "Movie title used for testing", release_date: "2021", director: "kevin")
+        
         viewModel.moviePublishArr
             .bind(to: movieObserver)
             .disposed(by: disposeBag)
         
         scheduler.scheduleAt(10) {
-            self.viewModel.moviePublishArr.onNext([MovieModel(title: "test", description: "test", release_date: "test", director: "test")])
+            self.viewModel.moviePublishArr.onNext([mockMovieModel, mockMovieModel])
         }
         
         scheduler.start()
         
-        XCTAssertEqual(movieObserver.events, [.next(10, [MovieModel(title: "test", description: "test", release_date: "test", director: "test")])])
+        XCTAssertEqual(movieObserver.events, [.next(10, [mockMovieModel, mockMovieModel])])
     }
 }
 
 extension MovieModel: Equatable {
     public static func ==(lhs: MovieModel, rhs: MovieModel) -> Bool {
-        return true
+        return lhs.title == rhs.title &&
+            lhs.description == rhs.description &&
+            lhs.release_date == rhs.release_date &&
+            lhs.director == rhs.director
+        
     }
 }
